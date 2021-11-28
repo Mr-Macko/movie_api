@@ -3,6 +3,7 @@ const express = require ('express'),
     morgan = require ('morgan');
 const app = express();
 
+// example data set of movies
 let topMovies = [
     {
         title: 'Movie',
