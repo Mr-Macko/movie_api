@@ -1,6 +1,6 @@
 // requires express module
 const express = require ('express'),
-    morgan = requiere ('morgan');
+    morgan = require ('morgan');
 const app = express();
 
 let topMovies = [
