@@ -1,5 +1,6 @@
 // requires express module
-const express = require ('express');
+const express = require ('express'),
+    morgan = requiere ('morgan');
 const app = express();
 
 let topMovies = [
@@ -60,6 +61,7 @@ let topMovies = [
     },
 ];
 
+app.use (morgan('common'));
 // GET reguests
 app.get('/', (req, res) => {
     res.send('Welcome to my movie app');
