@@ -59,3 +59,12 @@ let topMovies = [
         actor: 'Actor',
     },
 ];
+
+// GET reguests
+app.get('/', (req, res) => {
+    res.send('Welcome to my movie app');
+});
+
+app.get('/movies', (req, res) => {
+    res.json(topMovies);
+});
