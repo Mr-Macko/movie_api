@@ -74,6 +74,11 @@ app.get('/', (req, res) => {
 app.get('/movies', (req, res) => {
     res.json(topMovies);
 });
+
+app.get('/documentation', (req, res) => {                  
+    res.sendFile('public/documentation.html', { root: __dirname });
+  });
+
 // listen for requests
 app.listen(8080, () => {
     console.log('Your app is listening on port 8080.');
