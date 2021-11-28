@@ -2,8 +2,6 @@
 const express = require ('express');
 const morgan = require ('morgan');
 const app = express();
-const bodyParser = require('body-parser'),
-  methodOverride = require('method-override');
 
 // example data set of movies
 let topMovies = [
@@ -81,14 +79,7 @@ app.get('/documentation', (req, res) => {
     res.sendFile('public/documentation.html', { root: __dirname });
   });
 
-// error handler
-app.use(bodyParser.urlencoded({
-    extended: true
-  }));
-  
-  app.use(bodyParser.json());
-  app.use(methodOverride());
-  
+// error handler  
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something broke!');
