@@ -61,7 +61,10 @@ let topMovies = [
     },
 ];
 
+// middleware functions
 app.use (morgan('common'));
+app.use(express.static('public'));
+
 // GET reguests
 app.get('/', (req, res) => {
     res.send('Welcome to my movie app');
