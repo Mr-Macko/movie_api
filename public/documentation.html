@@ -6,5 +6,148 @@
     <body>
         <h1>Movie API</h1>
         <p>This API will provide a database of movies. It will support searches by actor and genre.</p>
+
+        <table>
+            <thead>
+                <th>Business Logic</th>
+                <th>URL</th>
+                <th>HTTP Method</th>
+                <th>Request body data format</th>
+                <th>Response body data format</th>
+            </thead>
+            <tbody>             
+                <tr>
+                    <td>Return a list of ALL movies to the user</td>
+                    <td>/movies</td>
+                    <td>GET</td>
+                    <td>None</td>
+                    <td>A JSON object holding data about all movies</td>
+                </tr>
+                <tr>
+                    <td>Return data about a single movie by title to the user</td>
+                    <td>/movies/:title</td>
+                    <td>GET</td>
+                    <td>None</td>
+                    <td>A JSON object holding data about a single movie, containing title, genre, actor and director. <br>
+                        <code>
+                            {<br>
+                            "title": "Movie Title",<br>
+                            "genre": "Genre Name",<br>
+                            "actor": "Actor Name"<br>
+                            "director": "Director Name"<br>
+                            },
+                        </code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Return data about a genre by name</td>
+                    <td>/movies/genre/:name</td>
+                    <td>GET</td>
+                    <td>None</td>
+                    <td>A JSON holding data about a single genre.<br>
+                        <code>
+                            {<br>
+                            "name": "Genre Name",<br>
+                            "description": "Genre description",<br>
+                            },
+                        </code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Return data about a director by name</td>
+                    <td>/directors/:name</td>
+                    <td>GET</td>
+                    <td>None</td>
+                    <td>
+                        A JSON holding data about a single director.<br>
+                        <code>
+                            {<br>
+                            "name": "Director Name",<br>
+                            "bio": "Director Bio",<br>
+                            "birth-year": "Birth Year",<br>
+                            "death-year": "Death Year",<br>
+                            },
+                        </code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Allow new users to register</td>
+                    <td>/user</td>
+                    <td>POST</td>
+                    <td>
+                        A JSON holding data about a new user.<br>
+                        <code>
+                            {<br>
+                            "firstName": "First name",<br>
+                            "lastName": "Last name",<br>
+                            "username": "Username",<br>
+                            "email": "Email adress<br>
+                            "password": "Password",<br>
+                            },
+                        </code>
+                    </td>
+                    <td>
+                        A JSON holding data about a new created user with ID.<br>
+                        <code>
+                            {<br>
+                            "_id": "User ID"<br>
+                            "firstName": "First name",<br>
+                            "lastName": "Last name",<br>
+                            "username": "Username",<br>
+                            "email": "Email adress",<br>
+                            "password": "Password",<br>
+                            },
+                        </code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Allow users to update their user info</td>
+                    <td>/user/:username</td>
+                    <td>PUT</td>
+                    <td>
+                        A JSON holding updated data of a user<br>
+                        Example:<br>
+                        <code>
+                            "Username": "Changed Usernamer"
+                        </code>
+                    </td>
+                    <td>
+                       A JSON holding updated data of the user.
+                       <code>
+                        {<br>
+                            "id": "User ID"<br>
+                            "firstName": "First name",<br>
+                            "lastName": "Last name",<br>
+                            "username": "Changed Username",<br>
+                            "email": "Email adress",<br>
+                            "password": "Password",<br>
+                            },
+                        </code>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Allow users to add a movie to their list of favorites</td>
+                    <td>/user/:username/movies/:favorite-movies</td>
+                    <td>PUT</td>
+                    <td>None</td>
+                    <td>A text message indicating whether a movie was successfully added to favorites list.</td>
+                </tr>
+                <tr>
+                    <td>Allow users to remove a movie from their list of favorites</td>
+                    <td>/user/:username/movies/:favorite-movies</td>
+                    <td>DELETE</td>
+                    <td>None</td>
+                    <td>A text message indicating whether a movie was successfully deleted to favorites list.</td>
+                </tr>
+                <tr>
+                    <td>Allow existing users to deregister</td>
+                    <td>/users/:userID</td>
+                    <td>DELETE</td>
+                    <td>None</td>
+                    <td>A text message indicating whether a user was successfully deleted tfrom the database.</td>
+                </tr>
+            </tbody>
+        </table>
     </body>
 </html>
