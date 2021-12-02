@@ -4,61 +4,24 @@ const morgan = require ('morgan');
 const app = express();
 
 // example data set of movies
-let topMovies = [
+let movies = [
     {
-        title: 'Movie',
-        genre: 'Genre',
-        actor: 'Actor',
+        "title": "Movie",
+        "genre": "Genre",
+        "actor": "Actor",
+        "director": "Director"
     },
     {
-        title: 'Movie',
-        genre: 'Genre',
-        actor: 'Actor',
+        "title": "Movie",
+        "genre": "Genre",
+        "actor": "Actor",
+        "director": "Director"
     },
     {
-        title: 'Movie',
-        genre: 'Genre',
-        actor: 'Actor',
-    },
-    {
-        title: 'Movie',
-        genre: 'Genre',
-        actor: 'Actor',
-    },
-    {
-        title: 'Movie',
-        genre: 'Genre',
-        actor: 'Actor',
-    },
-    {
-        title: 'Movie',
-        genre: 'Genre',
-        actor: 'Actor',
-    },
-    {
-        title: 'Movie',
-        genre: 'Genre',
-        actor: 'Actor',
-    },
-    {
-        title: 'Movie',
-        genre: 'Genre',
-        actor: 'Actor',
-    },
-    {
-        title: 'Movie',
-        genre: 'Genre',
-        actor: 'Actor',
-    },
-    {
-        title: 'Movie',
-        genre: 'Genre',
-        actor: 'Actor',
-    },
-    {
-        title: 'Movie',
-        genre: 'Genre',
-        actor: 'Actor',
+        "title": "Movie",
+        "genre": "Genre",
+        "actor": "Actor",
+        "director": "Director"
     },
 ];
 
