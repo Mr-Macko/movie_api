@@ -1,3 +1,13 @@
+// integrates mongoose
+const mongoose = require('mongoose');
+const Models = require('./models.js');
+
+const Movies = Models.Movie;
+const User = Models.User;
+
+// connects mongoose to mongodb database (movies and users)
+mongoose.connect('mongodb://localhost:27017/movie-api-db', { useNewUrlParser: true, useUnifiedTopology: true });
+
 // requires express module
 const express = require ('express');
 const morgan = require ('morgan');
