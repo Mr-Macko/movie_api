@@ -11,7 +11,10 @@ mongoose.connect('mongodb://localhost:27017/movie-api-db', { useNewUrlParser: tr
 // requires express module
 const express = require ('express');
 const morgan = require ('morgan');
+const bodyParser = require('body-parser');
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 // example data set of movies
 let movies = [
