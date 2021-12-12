@@ -16,3 +16,16 @@ let movieSchema = mongoose.Schema({
     Actors: [String],
     ImagePath: String,
     Featured: Boolean
+});
+
+// User Schema 
+let userSchema = mongoose.Schema({
+    Username: {type: String, required: trule},
+    Password: {type: String, required: true},
+    Email: {type: String, required: true},
+    Birthday: Date,
+    FavortieMovies: [{type: mongoose.Schema.Types.ObjectId, ref: Movie}]
+});
+
+module.exports.Movie = Movie;
+module.exports.User = User;
