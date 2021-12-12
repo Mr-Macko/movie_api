@@ -27,5 +27,9 @@ let userSchema = mongoose.Schema({
     FavortieMovies: [{type: mongoose.Schema.Types.ObjectId, ref: Movie}]
 });
 
+// creates models for movies and users
+let Movie = mongoose.model('Movie', movieSchema);
+let User = mongoose.model('User', userSchema);
+
 module.exports.Movie = Movie;
 module.exports.User = User;
