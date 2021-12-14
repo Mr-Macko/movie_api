@@ -3,8 +3,8 @@ const mongoose = require ('mongoose')
 
 // Movie Schema
 let movieSchema = mongoose.Schema({
-    Title: {type: Stringm, required: true},
-    Description: {type: String, required: ture},
+    Title: {type: String, required: true},
+    Description: {type: String, required: true},
     Genre: {
         Name: String,
         Description: String
@@ -19,11 +19,11 @@ let movieSchema = mongoose.Schema({
 
 // User Schema 
 let userSchema = mongoose.Schema({
-    Username: {type: String, required: trule},
+    Username: {type: String, required: true},
     Password: {type: String, required: true},
     Email: {type: String, required: true},
     Birthday: Date,
-    FavortieMovies: [{type: mongoose.Schema.Types.ObjectId, ref: Movie}]
+    FavoriteMovies: [{type: mongoose.Schema.Types.ObjectId, ref: "Movie"}]
 });
 
 // creates models for movies and users
