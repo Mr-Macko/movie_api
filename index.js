@@ -3,21 +3,21 @@ const mongoose = require('mongoose');
 const Models = require('./models.js');
 
 const Movies = Models.Movie;
-const User = Models.User;
+const Users = Models.User;
 
 // connects mongoose to mongodb database (movies and users)
 mongoose.connect('mongodb://localhost:27017/movie-api-db', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // requires express module
-const express = require ('express');
-const morgan = require ('morgan');
+const express = require('express');
+const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // middleware functions
-app.use (morgan('common'));
+app.use(morgan('common'));
 app.use(express.static('public'));
 
 // GET reguests
@@ -30,6 +30,7 @@ app.get('/', (req, res) => {
 // Get request for documentation page
 app.get('/documentation', (req, res) => {
     res.sendFile('public/documentation.html', { root: __dirname });
+});
 
 // Gets the list of data about ALL movies 61b2644cd8b1a67422eb3e7a
 app.get('/movies', (req, res) => {
