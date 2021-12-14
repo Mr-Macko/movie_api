@@ -16,28 +16,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-// example data set of movies
-let movies = [
-    {
-        "title": "Movie",
-        "genre": "Genre",
-        "actor": "Actor",
-        "director": "Director"
-    },
-    {
-        "title": "Movie",
-        "genre": "Genre",
-        "actor": "Actor",
-        "director": "Director"
-    },
-    {
-        "title": "Movie",
-        "genre": "Genre",
-        "actor": "Actor",
-        "director": "Director"
-    },
-];
-
 // middleware functions
 app.use (morgan('common'));
 app.use(express.static('public'));
