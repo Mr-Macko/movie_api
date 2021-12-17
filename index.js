@@ -21,7 +21,14 @@ app.use(morgan('common'));
 app.use(express.static('public'));
 
 // GET reguests
+// requires auth.js
+let auth = require('./auth')(app);
 
+// requires passport.js
+const passport = require('passport');
+require('./passport');
+
+// ***Server ENDPOINTS***
 // main/starting request
 app.get('/', (req, res) => {
     res.send('Welcome to my movie app');
@@ -42,7 +49,7 @@ app.get('/movies', (req, res) => {
             console.error(err);
             res.status(500).send('Error: ' + err);
         });
-})
+});
 
 // Gets data of a single movie, by name
 app.get('/movies/:title', (req, res) => {
