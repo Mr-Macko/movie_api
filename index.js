@@ -20,7 +20,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('common'));
 app.use(express.static('public'));
 
-// GET reguests
 // requires auth.js
 let auth = require('./auth')(app);
 
