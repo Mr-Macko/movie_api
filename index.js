@@ -39,7 +39,7 @@ app.get('/documentation', (req, res) => {
 });
 
 // Gets the list of data about ALL movies 61b2644cd8b1a67422eb3e7a
-app.get('/movies', (req, res) => {
+app.get('/movies', passport.authenticate ('jwt', {session: false}),(req, res) => {
     Movies.find()
         .then((movies) => {
             res.status(201).json(movies);
