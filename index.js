@@ -8,6 +8,10 @@ const Users = Models.User;
 // connects mongoose to mongodb database (movies and users)
 mongoose.connect('mongodb://localhost:27017/movie-api-db', { useNewUrlParser: true, useUnifiedTopology: true });
 
+// requires CORS
+const cors = require('cors');
+app.use(cors());
+
 // requires express module
 const express = require('express');
 const morgan = require('morgan');
