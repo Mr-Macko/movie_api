@@ -1,3 +1,6 @@
+// requires bcrypt
+const bcrypt = require('bcrypt');
+
 // requires mongoose
 const mongoose = require ('mongoose')
 
