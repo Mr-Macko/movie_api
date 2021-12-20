@@ -12,6 +12,9 @@ mongoose.connect('mongodb://localhost:27017/movie-api-db', { useNewUrlParser: tr
 const cors = require('cors');
 app.use(cors());
 
+// requires express-validator
+const {check, ValidationResult} = require('express-validator');
+
 // requires express module
 const express = require('express');
 const morgan = require('morgan');
