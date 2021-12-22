@@ -5,8 +5,11 @@ const Models = require('./models.js');
 const Movies = Models.Movie;
 const Users = Models.User;
 
-// connects mongoose to mongodb database (movies and users)
+// connects mongoose to LOCAL mongodb database (movies and users)
 mongoose.connect('mongodb://localhost:27017/movie-api-db', { useNewUrlParser: true, useUnifiedTopology: true });
+
+// connects mongoose to REMOTE mongodb database (movies and users)
+mongoose.connect('mongodb+srv://admin:Kv90m4@1992@cluster0.7xqcg.mongodb.net/movie-api-db?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // requires CORS
 const cors = require('cors');
