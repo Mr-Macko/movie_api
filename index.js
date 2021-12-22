@@ -106,7 +106,7 @@ app.post('/users',
   ], (req, res) => {
 
   // check the validation object for errors
-    let errors = validationResult(req);
+    let errors = ValidationResult(req);
 
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
