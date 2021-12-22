@@ -97,12 +97,12 @@ app.get('/directors/:name', passport.authenticate ('jwt', {session: false}), (re
 });
 
 // Creates new user
-app.post('/users', passport.authenticate ('jwt', {session: false}), (req, res) => {
+app.post('/users', (req, res) => {
   let hashedPassword = Users.hashPassword(req.body.Password);
-    Users.findOne({ Username: req.body.Username })
+  Users.findOne({ Username: req.body.Username })
     .then((user) => {
       if (user) {
-        return res.status(400).send(req.body.Username + 'already exists');
+        return res.status(400).send(req.body.Username + ' already exists');
       } else {
         Users
           .create({
@@ -111,11 +111,11 @@ app.post('/users', passport.authenticate ('jwt', {session: false}), (req, res) =
             Email: req.body.Email,
             Birthday: req.body.Birthday
           })
-          .then((user) =>{res.status(201).json(user) })
-        .catch((error) => {
-          console.error(error);
-          res.status(500).send('Error: ' + error);
-        })
+          .then((user) => { res.status(201).json(user) })
+          .catch((error) => {
+            console.error(error);
+            res.status(500).send('Error: ' + error);
+          });
       }
     })
     .catch((error) => {
