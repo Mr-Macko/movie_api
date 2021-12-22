@@ -103,7 +103,7 @@ app.post('/users',
     check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
     check('Password', 'Password is required').not().isEmpty(),
     check('Password', 'Password must be 8 characters long').isLength({min: 8}),
-    check('Email', 'Email does not appear to be valid').isEmail()
+    check('email', 'Email does not appear to be valid').isEmail()
   ], (req, res) => {
 
   // check the validation object for errors
@@ -122,7 +122,7 @@ app.post('/users',
           .create({
             Username: req.body.Username,
             Password: hashedPassword,
-            Email: req.body.Email,
+            email: req.body.email,
             Birthdate: req.body.Birthdate
           })
           .then((user) =>{res.status(201).json(user) })
@@ -156,7 +156,7 @@ app.put('/users/:username', passport.authenticate ('jwt', {session: false}), (re
         {
           Username: req.body.Username,
           Password: req.body.Password,
-          Email: req.body.Email,
+          email: req.body.email,
           Birthday: req.body.Birthday
         }
       },
