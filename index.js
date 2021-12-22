@@ -97,36 +97,40 @@ app.get('/directors/:name', passport.authenticate ('jwt', {session: false}), (re
 });
 
 // Creates new user
-app.post('/users',
+app.post(
+  '/users',
   [
-    check('Username', 'Username is required').isLength({min: 5}),
-    check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
-    check('Password', 'Password is required').not().isEmpty(),
-    check('Email', 'Email does not appear to be valid').isEmail()
-  ], (req, res) => {
-
-  // check the validation object for errors
-    let errors = ValidationResult(req);
-
+    check(
+      'username',
+      'Username is required and needs to have at least 5 Characters'
+    ).isLength({ min: 5 }),
+    check(
+      'username',
+      'Username contains non alphanumeric characters - not allowed.'
+    ).isAlphanumeric(),
+    check('password', 'Password is required').not().isEmpty(),
+    check('email', 'Email does not appear to be valid').isEmail(),
+  ],
+  (req, res) => {
+    let errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     }
-
-    let hashedPassword = Users.hashPassword(req.body.Password);
-    Users.findOne({ Username: req.body.Username }) // Search to see if a user with the requested username already exists
+    let hashedPassword = Users.hashPassword(req.body.password);
+    Users.findOne({ username: req.params.username })
       .then((user) => {
         if (user) {
-          //If the user is found, send a response that it already exists
-          return res.status(400).send(req.body.Username + ' already exists');
+          return res.status(400).send(req.body.username + ' already exists');
         } else {
-          Users
-            .create({
-              Username: req.body.Username,
-              Password: hashedPassword,
-              Email: req.body.Email,
-              Birthday: req.body.Birthday
+          Users.create({
+            username: req.body.username,
+            password: hashedPassword,
+            email: req.body.email,
+            birthday: req.body.birthday,
+          })
+            .then((user) => {
+              res.status(201).json(user);
             })
-            .then((user) => { res.status(201).json(user) })
             .catch((error) => {
               console.error(error);
               res.status(500).send('Error: ' + error);
@@ -137,7 +141,8 @@ app.post('/users',
         console.error(error);
         res.status(500).send('Error: ' + error);
       });
-  });
+  }
+);
 
 // Updates data of user
 app.put('/users/:username', passport.authenticate ('jwt', {session: false}), (req, res) => {
