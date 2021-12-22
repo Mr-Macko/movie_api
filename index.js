@@ -11,10 +11,6 @@ const Users = Models.User;
 // connects mongoose to REMOTE mongodb database (movies and users)
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-// requires CORS
-const cors = require('cors');
-app.use(cors());
-
 // requires express-validator
 const {check, ValidationResult} = require('express-validator');
 
@@ -29,6 +25,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // middleware functions
 app.use(morgan('common'));
 app.use(express.static('public'));
+
+// requires CORS
+const cors = require('cors');
+app.use(cors());
 
 // requires auth.js
 let auth = require('./auth')(app);
