@@ -12,7 +12,7 @@ const Users = Models.User;
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // requires express-validator
-const {check, ValidationResult} = require('express-validator');
+const {check, validationResult} = require('express-validator');
 
 // requires express module
 const express = require('express');
@@ -114,7 +114,7 @@ app.post('/users',
     check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
     check('Password', 'Password is required').not().isEmpty(),
     check('Password', 'Password must be 8 characters long').isLength({min: 8}),
-    check('email', 'Email does not appear to be valid').isEmail()
+    check('Email', 'Email does not appear to be valid').isEmail()
   ], (req, res) => {
 
   // check the validation object for errors
@@ -133,7 +133,7 @@ app.post('/users',
           .create({
             Username: req.body.Username,
             Password: hashedPassword,
-            email: req.body.email,
+            Email: req.body.Email,
             Birthdate: req.body.Birthdate
           })
           .then((user) =>{res.status(201).json(user) })
@@ -167,7 +167,7 @@ app.put('/users/:username', passport.authenticate ('jwt', {session: false}), (re
         {
           Username: req.body.Username,
           Password: req.body.Password,
-          email: req.body.email,
+          Email: req.body.Email,
           Birthday: req.body.Birthday
         }
       },
