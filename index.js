@@ -59,7 +59,7 @@ app.get('/documentation', (req, res) => {
     res.sendFile('public/documentation.html', { root: __dirname });
 });
 
-// Gets the list of data about ALL movies 61b2644cd8b1a67422eb3e7a
+// Gets the list of data about ALL movies 
 app.get('/movies', passport.authenticate ('jwt', {session: false}),(req, res) => {
     Movies.find()
         .then((movies) => {
